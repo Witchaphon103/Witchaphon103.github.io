@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -14,36 +15,31 @@
     <script>
       function addtodo() {
         const inputValue = document.getElementById("input").value;
-        document.getElementById("input").value= "";
-        //create new element <li>
+   
         let newElement = document.createElement("li"); //<li></li>
         newElement.classList.add("list-group-item"); //<li class="list-group-item"></li>
-        
         let newTxtElement = document.createTextNode(inputValue); //create Text
-        newElement.appendChild(newTxtElement); //<li>Text</li> 
-        
-        //ลบ
-        let deleteButton = document.createElement("button");
-        deleteButton.className = "btn btn-danger btn-sm float-end";
-        deleteButton.innerHTML = "ลบ";
-        deleteButton.addEventListener("click", function() {
-        newElement.remove();
-        });
-
-
-
-        newElement.appendChild(deleteButton);
-    
+        newElement.appendChild(newTxtElement); //<li>Text</li>
 
         let listElement = document.getElementById("listtodo");
         listElement.appendChild(newElement);
-        
+
+        //เพิ่มรายการแล้ว
+        document.getElementById("input").value = "";
+
       }
+      function deleteAllTodos() {
+        let listElement = document.getElementById("listtodo");
+        listElement.innerHTML = "";
+      }
+
+
     </script>
+    
     <div class="container">
       <h1 class="my-3">My to-do</h1>
       <div class="row">
-        <div class="col col-md-4 col-sm-12">
+        <div class="col col-md-5 col-sm-20">
           <div class="input-group mb-3">
             <input
               id="input"
@@ -61,11 +57,21 @@
             >
               +
             </button>
+
+            <button
+            class="btn btn-danger ms-1"
+            type="button"
+            onclick="deleteAllTodos()"
+          >
+
+            Delete
+          </button>
+
           </div>
         </div>
-        <div class="col col-md-8 col-sm-12">
+        <div class="col col-md-8 col-sm-20">
           <ul class="list-group" id="listtodo">
-            <li class="list-group-item">รายการที่เพิ่ม</li>
+            <li class="list-group-item">An item</li>
           </ul>
         </div>
       </div>
