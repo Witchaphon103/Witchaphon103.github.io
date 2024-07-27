@@ -17,12 +17,8 @@
   </head>
   <body>
     <div class="container">
-      <h1 id="name">Pokedex Lab</h1>
-      <div id="pokemon-stats" class="row"></div>
-      <h1 id="abilities">
-        <a href="abilities.html?name=${name}" id="abilities-link">ความสามารถ</a>
-      </h1>
-
+      <h1 id="name">Pokemon Lab</h1>
+      <div id="abilities-list" class="row"></div>
     </div>
     <script>
       const urlParams = new URLSearchParams(window.location.search);
@@ -32,27 +28,22 @@
         fetch(`https://pokeapi.co/api/v2/pokemon/${name}`)
           .then((res) => res.json())
           .then((pokemonData) => {
-
-            const stats = pokemonData.stats;
+            const abilities = pokemonData.abilities;
             const pokemonName = pokemonData.name.charAt(0).toUpperCase() + pokemonData.name.slice(1);
 
+            document.getElementById("name").innerText = pokemonName + " Abilities";
 
-            document.getElementById("name").innerText = pokemonName;
-            document.getElementById("abilities-link").href = `abilities.html?name=${name}`;
-
-            const statsHtml = stats.map(stat => `
+            const abilitiesHtml = abilities.map(ability => `
               <div class="col-5">
                 <div class="card">
                   <div class="card-header">
-                    <h5 class="card-title">${stat.stat.name.charAt(0).toUpperCase() + stat.stat.name.slice(1)}</h5>
-                    <p class="card-text">Base Value: ${stat.base_stat}</p>
+                    <h5 class="card-title">${ability.ability.name.charAt(0).toUpperCase() + ability.ability.name.slice(1)}</h5>
                   </div>
                 </div>
               </div>
             `).join("");
 
-
-            document.getElementById("pokemon-stats").innerHTML = statsHtml;
+            document.getElementById("abilities-list").innerHTML = abilitiesHtml;
           })
           .catch((err) => console.error(err));
       } 

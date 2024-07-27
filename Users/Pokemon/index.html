@@ -27,9 +27,20 @@
           const datas = data["results"];
           const ele = document.getElementById("name");
           let count = 1;
+
           datas.forEach((element) => {
-            //https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png
             const name = element["name"];
+
+            fetch(element["url"])
+              .then((res) => res.json())
+              .then((pokemonData) => {
+                const height = pokemonData["height"];
+
+            fetch(element["url"])
+              .then((res) => res.json())
+              .then((pokemonData) => {
+                const weight = pokemonData["weight"];
+
             ele.innerHTML +=
               "<div class='col-3'>" +
               "<a href='details/index.html?name=" +
@@ -39,8 +50,13 @@
               "<img class='card-img-top' src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"+count+".png'>" +
               "<div class='card-body'>" +
               name +
-              count++;
+              "<p class='card-text'>Height: " + height / 10 + " m</p>" +
+              "<p class='card-text'>weitght: " + weight / 10 + " kg</p>" +
+              
               "</div></div></a></div>";
+              count++;
+            })
+          })
           });
         })
         .catch((err) => console.error(err));
