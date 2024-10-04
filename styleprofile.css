@@ -1,0 +1,91 @@
+/* stylesprofile.css */
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f2f5;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    font-size: 2.5em;
+    color: #4a90e2;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.profile-image img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #4a90e2;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-right: 20px;
+}
+
+.profile-details {
+    max-width: 600px;
+}
+
+.profile-details h2 {
+    margin-top: 0;
+    font-size: 1.8em;
+    color: #333;
+}
+
+.profile-details p {
+    font-size: 1.1em;
+    margin: 5px 0;
+}
+
+.profile-details strong {
+    color: #4a90e2;
+}
+
+.work {
+    text-align: center;
+}
+
+.work h2 {
+    margin-top: 0;
+    font-size: 2em;
+    color: #333;
+}
+
+.links p {
+    margin: 10px 0;
+}
+
+.links a {
+    text-decoration: none;
+    color: #4a90e2;
+    font-size: 1.2em;
+    transition: color 0.3s ease;
+}
+
+.links a:hover {
+    color: #007bff;
+    text-decoration: underline;
+}
